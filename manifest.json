@@ -12,10 +12,7 @@
         "scripts": ["wayback_helper.js"]
     },
     "permissions": [
-        "webRequest",
-        "activeTab",
         "tabs",
-        "contextMenus",
-        "reload"
+        "contextMenus"
     ]
 }
