@@ -24,7 +24,7 @@ function waybackLatest(tab) {
     console.log('Looking up the newest archive');
     // Try to access a page whose date is the first day of next year
     var date = new Date();
-    var future_date = (date.getFullYear() + 1) + '0001000000';
+    var future_date = (date.getFullYear() + 1) + '0101000000';
     var wayback_url = wayback_machine_url + '/' + future_date + '/' + tab.url;
     console.log('> ' + wayback_url);
     chrome.tabs.update(tab.id, {url: wayback_url});
