@@ -1,12 +1,16 @@
 {
     "manifest_version": 2,
     "name": "Wayback Machine Helper",
-    "version": "0.5",
+    "version": "0.6",
     "description": "Search and access the current URL on archive.org's Wayback Machine. Just access it by raising the context-menu by right-clicking while on a website.",
     "author": "gammy",
     "homepage_url": "https://github.com/gammy/wayback_helper",
     "icons": {
-        "48": "icons/archive.orgify-48.png"
+        "16": "icons/wayback-16.png",
+        "24": "icons/wayback-24.png",
+        "32": "icons/wayback-32.png",
+        "48": "icons/wayback-48.png",
+        "64": "icons/wayback-64.png"
     },
     "background": {
         "scripts": ["wayback_helper.js"]
