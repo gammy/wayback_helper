@@ -1,6 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Wayback Machine Helper",
+    "short_name": "Wayback Machine",
     "version": "0.6",
     "description": "Search and access the current URL on archive.org's Wayback Machine. Just access it by raising the context-menu by right-clicking while on a website.",
     "author": "gammy",
