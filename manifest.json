@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Wayback Machine Helper",
-    "version": "0.6",
-    "description": "Search and access the current URL on archive.org's Wayback Machine. Just access it by raising the context-menu by right-clicking while on a website.",
+    "version": "0.7",
+    "description": "Search and access the current URL on archive.org's Wayback Machine. Access it by raising the context-menu by right-clicking on a page, or a link.",
     "author": "gammy",
     "homepage_url": "https://github.com/gammy/wayback_helper",
     "icons": {

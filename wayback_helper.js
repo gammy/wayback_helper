@@ -13,32 +13,46 @@ chrome.contextMenus.create({
 });
 
 chrome.contextMenus.create({
+  id: "wayback-separator",
+  type: "separator",
+  contexts: ["all"]
+});
+
+chrome.contextMenus.create({
     id: 'wayback-search',
     title: 'Search the archive',
     contexts: ['all']
 });
 
-function waybackSearch(tab) {
+function getURL(info, tab) {
+   if(info.hasOwnProperty('linkUrl')) {
+       return(info.linkUrl);
+   } 
+   return(tab.url);
+}
+
+function waybackSearch(info, tab) {
     console.log('Performing archive search');
     // Wildcard search
-    var wayback_url = wayback_machine_url + '/*/' + tab.url;
+    var wayback_url = wayback_machine_url + '/*/' + getURL(info, tab);
     console.log('> ' + wayback_url);
     chrome.tabs.update(tab.id, {url: wayback_url});
 }
 
-function waybackOldest(tab) {
+function waybackOldest(info, tab) {
     console.log('Looking up the earliest archive');
-    var wayback_url = wayback_machine_url + '/0/' + tab.url;
+    var wayback_url = wayback_machine_url + '/0/' + getURL(info, tab);
     console.log('> ' + wayback_url);
     chrome.tabs.update(tab.id, {url: wayback_url});
 }
 
-function waybackNewest(tab) {
+function waybackNewest(info, tab) {
     console.log('Looking up the newest archive');
     // Try to access a page whose date is the first day of next year
     var date = new Date();
     var future_date = (date.getFullYear() + 1) + '0101000000';
-    var wayback_url = wayback_machine_url + '/' + future_date + '/' + tab.url;
+    var wayback_url = 
+        wayback_machine_url + '/' + future_date + '/' + getURL(info, tab);
     console.log('> ' + wayback_url);
     chrome.tabs.update(tab.id, {url: wayback_url});
 }
@@ -46,13 +60,13 @@ function waybackNewest(tab) {
 function contextClick(info, tab) {
     switch(info.menuItemId) {
         case('wayback-search'):
-            waybackSearch(tab);
+            waybackSearch(info, tab);
             break;
         case('wayback-get-oldest'):
-            waybackOldest(tab);
+            waybackOldest(info, tab);
             break;
         case('wayback-get-newest'):
-            waybackNewest(tab);
+            waybackNewest(info, tab);
             break;
     }
 }
